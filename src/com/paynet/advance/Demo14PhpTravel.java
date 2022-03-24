@@ -3,6 +3,7 @@ package com.paynet.advance;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,7 +15,7 @@ public class Demo14PhpTravel {
 
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		driver.get("https://phptravels.net/");
 
 		driver.findElement(By.linkText("Hotels")).click();
@@ -28,6 +29,9 @@ public class Demo14PhpTravel {
 		
 		action.pause(Duration.ofSeconds(1))
 		.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
+		
+		JavascriptExecutor js =(JavascriptExecutor) driver;
+		js.executeScript("document.querySelector('#checkin').value='12-04-2022'");
 
 	}
 }
